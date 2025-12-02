@@ -25,7 +25,9 @@ const logger = winston.createLogger({
 });
 
 const CONFIG_FILE_PATH = "apps_config.json";
-const CHECK_INTERVAL = 60000;
+const CHECK_INTERVAL = process.env.CHECK_INTERVAL
+    ? parseInt(process.env.CHECK_INTERVAL, 10)
+    : 60 * 1000;
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
